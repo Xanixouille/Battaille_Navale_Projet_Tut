@@ -22,6 +22,12 @@ public class main{
 
 			yolo.add(prout);
 
+			while(true){
+
+				prout.avance();
+				Thread.sleep(1000);
+			}
+
 		}
 
 }
