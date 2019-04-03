@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Game {
 
-    public static boolean debugModeEnabled = true;
+    public static boolean debugModeEnabled = false;
 
     /**
      * La fenêtre principale du jeu, modifiable et public pour pouvoir ajuster certains paramètres (comme le titre par exemple)
@@ -108,7 +108,7 @@ public class Game {
 
         //On définit 2,3 propriètées de la fenetre
         fenetre.setTitle("Battaille Navale !");
-        fenetre.setSize(1000,600);
+        fenetre.setSize(1200,600);
         fenetre.setResizable(false);
         fenetre.setLocationRelativeTo(null);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

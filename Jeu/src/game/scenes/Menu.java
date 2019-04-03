@@ -37,7 +37,7 @@ public class Menu extends Scene {
             }
         };
         bouttonCredits = new BouttonSansFond(22,420,40,"Crédits");
-        gn = new GenerateurDeParticules(0, 0,0,0,100,1000,
+        gn = new GenerateurDeParticules(0, 0,0,0,100,100,
                 ImageIO.read(Game.class.getResourceAsStream("/images/bulle_1.png")));
     }
 

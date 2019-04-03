@@ -32,33 +32,17 @@ public class GenerateurDeParticules {
         rng = new Random();
         m_particules = new ArrayList<Particules>();
         m_toRmv = new ArrayList<Particules>();
-        if(Game.debugModeEnabled){
-            System.out.println("Particles createds");
-        }
     }
 
     public void update(){
-        if(Game.debugModeEnabled){
-            System.out.println(m_timer);
-        }
-        if(m_timer >= m_spawnDelay){
-            m_timer = 0;
-            if(m_particules.size() < m_maxEntities){
-                creerParticule();
-            }
-        }
+
+
 
 
     }
 
     public void draw(Graphics g, JPanel p){
-        if(Game.debugModeEnabled){
-            g.setColor(Color.green);
-            g.drawLine(m_xpos,m_ypos,m_xpos+m_width,m_ypos);
-            g.drawLine(m_xpos,m_heigth + m_ypos,m_xpos+m_width,m_heigth+m_ypos);
-            g.drawLine(m_xpos,m_ypos,m_xpos,m_ypos+m_heigth);
-            g.drawLine(m_xpos+m_width,m_ypos,m_xpos+m_width,m_ypos+m_heigth);
-        }
+        g.setColor(Color.WHITE);
         for ( Particules pt: m_particules) {
                 if(pt.getM_y() + pt.getM_h() < 0){
                     m_toRmv.add(pt);
@@ -72,6 +56,12 @@ public class GenerateurDeParticules {
         }
         m_toRmv.clear();
 
+        if(m_timer >= m_spawnDelay){
+            m_timer = 0;
+            if(m_particules.size() < m_maxEntities){
+                creerParticule();
+            }
+        }
 
         m_timer += 12;
     }
