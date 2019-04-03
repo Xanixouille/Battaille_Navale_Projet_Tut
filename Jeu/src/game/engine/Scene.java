@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
+import java.io.IOException;
 
 /**
  * <b>Scene est une classe abstraite qui permet de créer des classes qui permettrons a leurs tour de mieux découper les difèrentes fonction.</b>
@@ -38,7 +39,7 @@ public abstract class Scene{											//classe abstraite car on instancie pas d
      * elle est appellée automatiquement. Cette fonction peut servir a initialiser certaines variables.
      * @see Game#switchScene(int sceneId)
      */
-    public abstract void startEvent();
+    public abstract void startEvent() throws IOException, FontFormatException;
 
     /**
      * Input est la fonction qui va gerer toutes les entrées CLAVIER de la scene.

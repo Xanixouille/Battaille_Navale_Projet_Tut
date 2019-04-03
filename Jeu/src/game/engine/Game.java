@@ -1,11 +1,15 @@
 package game.engine;
 
+import game.scenes.Menu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
 public class Game {
+
+    public static boolean debugModeEnabled = true;
 
     /**
      * La fenêtre principale du jeu, modifiable et public pour pouvoir ajuster certains paramètres (comme le titre par exemple)
@@ -94,6 +98,7 @@ public class Game {
             }
 
             public void keyReleased(KeyEvent e){
+                if(e.getKeyCode() == 112){ debugModeEnabled = !debugModeEnabled;}
                 sceneIndex[currentscene].input(e,"kr");
             }
         });
@@ -146,8 +151,9 @@ public class Game {
      * C'est aussi ici que l'on définit la taille de la liste.
      * @throws IOException
      */
-    public static void loadScenes() throws IOException { //Fonction qui load les scenes (wow explicite/20)
+    public static void loadScenes() throws IOException, FontFormatException { //Fonction qui load les scenes (wow explicite/20)
         sceneIndex = new Scene[1];//On initialise la liste avec le nombre de scenes que l'on a
+        sceneIndex[0] = new Menu();
         currentscene = 0;//On initialise l'id de la scene actuelle
     }
 
@@ -159,7 +165,7 @@ public class Game {
      * @param sceneId
      *		donne le numéro de la scene a charger.
      */
-    public static void switchScene(int sceneId){//Fonction qui va permettre le changement de scenes
+    public static void switchScene(int sceneId) throws IOException, FontFormatException {//Fonction qui va permettre le changement de scenes
         if(sceneIndex[sceneId] == null){return;}//Si l'on essaye de switch sur un scene qui n'existe pas on quite
         if(sceneId > sceneIndex.length){return;}//si l'on essaye de load une scene avec un id trop grand ou trop petit on quite
         sceneIndex[currentscene].exitEvent();// on execute deja les events de "fin" de la scene
@@ -167,4 +173,8 @@ public class Game {
         sceneIndex[currentscene].startEvent();//On execute ensuite les evenements de "début" de scenes
     }
 
+    public static void quit(){
+        fenetre.dispose();
+        System.exit(0);
+    }
 }
